@@ -1,0 +1,12 @@
+sort1 uses: bubble sort
+
+How do you know?: lowest time in sorting already sorted list
+
+sort2 uses: merge sort
+
+How do you know?: Avg time in sorting already sorted list
+
+sort3 uses: selection sort
+
+How do you know?: Worst time in sorting already sorted list
+
