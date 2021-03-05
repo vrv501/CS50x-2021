@@ -202,9 +202,3 @@ typedef struct
 photo image[400][600]
 Copying and assigning values to structure having BYTE variables is directly done by fread(image[i], nsize_t, size_t, fileptr)
 no need to again define image[i][j].a, image[i][j].b, image[i][j].c = respectibe bytes etc.
-
-
-
-
-
-
