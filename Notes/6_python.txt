@@ -1,0 +1,118 @@
+anything in {} can be variable names
+print(f"jaiodja, {dwdwqd}")
+
++= only in python
+
+while(True) or while(1) - booleans in loops
+
+for i in range(start, stop + 1, increment/decrement)
+
+for i in list/set/tuple can also be used
+
+python - loosely typed
+C - strongly typed
+
+Python data-types - int, str, float, bool
+list.insert(position, value)
+To extend lists
+list1.extend(list2)
+or list1[len(list): ] = list2
+
+can't do int('c') in python
+but int('91') - allowed
+str(97) - doesnt convert to ascii
+c > 'a' we can do comparisions like in C
+
+
+def func(a, b, c): #no need to define datatypes
+
+words = []
+file = open("filenmae.txt", "r")
+for line in file:
+    words.add(line.rstrip())
+file.close()
+
+.lower(), .upper(), - string & char functions
+.isaplha(), .islower(), .isupper() - char functions
+
+def main() is allowed in python
+calling done by 
+    if __name__ == "__main__": 
+        main()
+
+True, False
+
+interpreted language
+
+legb - scoping rules
+
+print("?", end = "\n or or HELLO or ,")
+print() - prints new line
+print("c" * num) - cccccc
+l = [1] * 4 = [1, 1, 1, 1]
+
+sum(data structure) - sum of all elements
+len(data structures) - length of data structure
+
+from sys import argv
+argv.py is the only one element stored in argv
+so to acccess CLI arg, we use argv[1] - to access elements beyond
+
+To use exit in c we use return 1 - fail, return 0 - good
+Here we use sys.exit(1), sys.exit(0)
+
+In dictionaries we can search for keys by directly doing
+if key in dictionary: (no need dictionary.keys())
+dictionary.items() - list of tuples having keys, values
+
+x, y = y, x
+
+import csv
+file = open(filename, "a")
+writer = csv.writer(file)
+writer.writerow([name, number]) - list because similar to csv cells
+file.close()
+
+file = open("edsdas.csv", "r")
+reader = csv.reader(file)
+next(reader) - skip 1st row(because headings)
+
+hedaer is 2d array where each row represents a row in csv 
+and each column represented values seperated by comma
+[1, 2, 3]
+
+for row in header:
+    house = row[1]
+
+with open(filename, "a") as file:
+    blah blah
+no longer we need file.close()
+
+f"Name {answer}" - can also be used not just in print but also passed to func arguments 
+also f"{expressions can also be used here}"
+f"{'#' * 4}"
+Ternary operator in python
+x = val1 if expression else val2
+
+csv.DictReader(file)
+converts every row into dictionary where each col heading is key and the col value becomes value
+min max
+0    1 - {"min" : 0, "max" : 1}
+2    3 - {"min" : 2, "max" : 3}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
