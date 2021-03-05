@@ -4,7 +4,7 @@
 > 
 Enroll here: [CS50x 2021](https://cs50.harvard.edu/x/2021/)\
 Instructor: [David J Malan](https://cs.harvard.edu/malan/)\
-Big Thanks to the Active [CS50 Discord Community](https://discord.com/invite/cs50)
+Big Thanks to the active [CS50 Discord Community](https://discord.com/invite/cs50)
 
 # Table Of Contents
  
