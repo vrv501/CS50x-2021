@@ -38,38 +38,3 @@ bubble sort - bubbling of larger numbers to right
 merge sort - sort left, sort right, merge
 sorting: divide until we have two sub arrays of size 1, then compare them and merge
 for sub arrays of size > 2, compare each element of left half of sub array and right half, then merge
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
