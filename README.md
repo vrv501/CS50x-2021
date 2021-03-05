@@ -7,5 +7,5 @@ Check out the Course here: [CS50x 2021](https://cs50.harvard.edu/x/2021/)
 
 Instructor: [David J Malan](https://cs.harvard.edu/malan/)
 
-# Table-Of-Contents
+# Table Of Contents
  
