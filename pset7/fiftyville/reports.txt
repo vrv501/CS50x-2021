@@ -58,7 +58,7 @@
 
 -     hour | minute |  id | destination_airport_id
         8  |   20   |  36 |    4 = TARGET (earliest flight from fiftyville)
-        9  |   30   |  43 |    1               - All flight id's leaving from fiftyville along with destination_id's sorted by earliest to last departure
+        9  |   30   |  43 |    1               - All flight id's leaving from fiftyville on 29-07-2020 along with destination_id's sorted by earliest to last departure
        12  |   15   |  23 |   11
        15  |   20   |  53 |    9
        16  |    0   |  18 |    6
