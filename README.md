@@ -3,6 +3,7 @@
 > View [Academic Honesty](https://cs50.harvard.edu/x/2021/honesty/) before checking the solutions.
 > 
 Check out the Course here: [CS50X 2021](https://cs50.harvard.edu/x/2021/)
+
 Instructor: [David J Malan](https://cs.harvard.edu/malan/)
 
 # Table-Of-Contents
