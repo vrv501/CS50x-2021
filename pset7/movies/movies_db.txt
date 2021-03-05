@@ -1,0 +1,8 @@
+Database used in this pset7/ movies:
+  wget https://cdn.cs50.net/2020/fall/psets/7/movies/movies.zip
+  
+OR
+
+by following instructions at: 
+  https://cs50.harvard.edu/x/2021/psets/7/movies/
+  
