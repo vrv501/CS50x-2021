@@ -99,20 +99,3 @@ converts every row into dictionary where each col heading is key and the col val
 min max
 0    1 - {"min" : 0, "max" : 1}
 2    3 - {"min" : 2, "max" : 3}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
