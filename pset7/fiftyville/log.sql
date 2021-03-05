@@ -25,7 +25,7 @@ WHERE account_number IN (SELECT account_number FROM atm_transactions
 WHERE (year = 2020 AND month = 7 AND day = 28 AND atm_location = "Fifer Street" AND transaction_type = "withdraw"))
 AND license_plate IN(SELECT DISTINCT(license_plate) FROM courthouse_security_logs
 WHERE (year = 2020 AND month = 7 AND day = 28 AND hour = 10 AND minute > 15 AND minute <= 25 AND activity = "exit"))
-))); --Get Caller, Receiver names along with their details from reciever phone numbers
+))); --Get Caller, Receiver details from phone numbers
 
 
 SELECT city FROM airports WHERE
