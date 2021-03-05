@@ -3,7 +3,8 @@
 > View [Academic Honesty](https://cs50.harvard.edu/x/2021/honesty/) before checking out the solutions.
 > 
 Enroll here: [CS50x 2021](https://cs50.harvard.edu/x/2021/)\
-Instructor: [David J Malan](https://cs.harvard.edu/malan/)
+Instructor: [David J Malan](https://cs.harvard.edu/malan/)\
+Big Thanks to the Active [CS50 Discord Community](https://discord.com/invite/cs50)
 
 # Table Of Contents
  
