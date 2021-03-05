@@ -123,10 +123,3 @@ any_num = low limit + (current_num - (higherlimit + 1))
 
 Ternary Operator
 int x = (expr)?value1(expr is true):value2(expr is false)
-
-
-
-
-
-
-
