@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+        <script>
+
+            // TODO: Add code to check answers to questions
+            function multiopt(event)
+            {
+                if (event.srcElement.innerHTML == "Washington D.C")
+                {
+                    event.srcElement.style.backgroundColor = "green";
+                    document.querySelector("#name1").innerHTML = `Correct`;
+                }
+                else
+                {
+                    event.srcElement.style.backgroundColor = "red";
+                    document.querySelector("#name1").innerHTML = `In-Correct`;
+                }
+
+
+            }
+            function freeres()
+            {
+                let name = document.querySelector("#name2");
+                let input = document.querySelector("input");
+                if (document.querySelector("#response").value == "Federal Bureau of Investigation")
+                {
+                    input.style.backgroundColor = "green";
+                    name.innerHTML = `Correct`;
+                }
+
+                else
+                {
+                    input.style.backgroundColor = "red";
+                    name.innerHTML = `In-Correct`;
+                }
+
+            }
+            function check()
+            {
+                document.querySelector("div.section").addEventListener("click", multiopt);
+                document.querySelector("#check").addEventListener("click", freeres);
+            }
+
+            document.addEventListener("DOMContentLoaded", check);
+
+        </script>
+
+    </head>
+    <body>
+
+        <div class="jumbotron">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <h3>What is the capital of United States of America?</h3>
+                    <button>Washington D.C</button>
+                    <button>New York</button>
+                    <button>Nevada</button>
+                    <button>New Jersey</button>
+                    <p id="name1"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <h3>What is the abbreviation of F.B.I?</h3>
+                <input id="response" type="text">
+                <button id = "check">Check Answer</button>
+                <p id="name2"></p>
+            </div>
+
+        </div>
+    </body>
+</html>
