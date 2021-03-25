@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if portfolio %}
+            {% for row in portfolio%}
+            <tr>
+                <td>{{row["symbol"]}}</td>
+                <td>{{row["name"]}}</td>
+                <td>{{row["shares"]}}</td>
+                <td>{{row["per_symbol_share_value"] | usd()}}</td>
+                <td>{{row["symbol_totalShares_value"] | usd()}}</td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+            <tr>
+                <td>CASH</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{cash | usd()}}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><b>{{total | usd()}}</b></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
