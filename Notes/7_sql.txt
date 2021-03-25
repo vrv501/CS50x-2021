@@ -1,0 +1,220 @@
+Spreadsheets good for growing data values vertically, horizontally
+flat-file database
+Have commas inside elements of csv can lead to undefined behavior
+so if an attribute has multiple commas then that particular whole attribute is quoted
+Ex: 1., The Office, "Comedy,drama,thriller"
+last col is a single attribute quoted
+
+for title in dictionary: gives keys
+def f(title):
+    return dict[title]
+
+for title in sorted(dict, key = f, reverse= True):
+    print(title, dict[title])
+
+
+def f():
+    return l[2]
+l = [[1,2],[3,4]]
+g = sorted(l, key = lambda x : x[1]) - here x is any ith element and x[1] is 2nd element in that list element
+
+relational databases
+tables
+sqlite3 - for quering commands to retrieve data from db
+
+Each row is a record, column is field 
+ENUM - Holds limited set of values that can be stored. Need to be specified(Ex: Red, gree, blue. But if we give purple it rejects)
+
+Commands to import csv into a db
+> sqlite3
+.mode csv
+.import 'FILE_NAME' DB_NAME
+
+CRUD
+CREATE READ UPDATE DELETE
+properties supported by any relational databases
+
+Important operations:
+CREATE, INSERT
+SELECT
+UPDATE
+DELETE
+
+CREATE TABLE name_of_table (column1 type, column 2 type,....); - Create db
+.schema - To see columns in db
+.tables - To see all tables in db
+
+SELECT column1, column2,.... FROM table; - to get all columns use *
+AVG, COUNT, DISTINCT, LOWER, MAX, MIN, UPPER, SUM
+DISTINCT - Only unique values from column DISTINCT(column)
+UPPER - Upper case all values in column UPPER(column)
+WHERE, LIKE, ORDER BY, LIMIT, GROUP BY
+SELECT col1 WHERE condition ORDER BY col1 ASC, col2 DESC - by default it orders by col1 in ascending order but if any two col have same col1 then it uses col2 to sort but in descending order
+
+WHERE column = "required word" - exact match
+WHERE column LIKE "%OFFICE%"; - LIKE is Case insensitive - match all words that have word somewhere in them
+% - Zero or more characters
+_ - single character
+_ can be chained like __ - two characters
+[]	Represents any character within the brackets	Ex: h[oa]t finds hot and hat, but not hit
+^	Represents any character not in the brackets	Ex: h[^oa]t finds hit, but not hot and hat
+-	Represents a range of characters	Ex: c[a-b]t finds cat and cbt
+
+
+
+
+predicate = condition in SQL
+
+SELECT DISTNCT(UPPER(TITLE)) FROM shows ORDER BY UPPER(title);
+
+SELECT UPPER(TRIM(title)), COUNT(title) FROM shows GROUP BY UPPER(TRIM(title)) ORDER BY COUNT(title) DESC LIMIT 10; - merge duplicates into a single value followed by counts and remove white spaces before and after title and order them by counts in descending order
+
+SELECT title FROM shows WHERE genre LIKE "%comedy,%" OR genre LIKE "%comedy%";
+
+INSERT INTO table_name (column1, column2, ...) VALUES(val1, val2);
+if using INSERT INTO and we left some columns, it by default uses NULL
+Keep in mind NULL not equals zero or white space
+IS NULL/ IS NOT NULL can be used to check if a col val is not null
+EX: INSERT INTO show (timestamp, title, genre) VALUES("21-03-12 4:40 pm", "abcd", "comedy, thriller") - Use quotations to indicate a string. If inside a quotation we have commas that means that particular column accepts multiple inputs
+
+UPDATE shows SET genre = "comedy, thriller, music" WHERE title LIKE "%MUSIC%";
+
+Motto:
+Analyse relationship b/w data and normalise redundancy using relational databases
+
+unique identifier - auto increment
+
+DATA TYPES:(Main data-types)
+NULL, BLOB, INTEGER, NUMERIC, REAL, TEXT
+BLOB - Binary large object Ex: 0,1's
+NUMERIC - It's numer like EX: year, timestamps etc
+INTEGER - smallint, bigint, integer - difference here no of bits to represent it
+REAL - real, double precision - difference here no of bits to represent it
+NUMERICAL - boolean, date, datetime, time, timestamp, numeric(scale, precision)
+TEXT - char(n) - here n indicates length(must be strictly equal to no of characters), varchar(n) - here n means max length(<=max length allowed), text
+
+In SQL, <> means not equals BETWEEN, LIKE, IN
+Also IN can be used like this:
+SELECT city WHERE City IN ('London', 'Luxemborg') - As list kind of notation
+AND, OR,NOT
+SELECT col FROM table WHERE NOT condition
+' ' - include strings in b/w
+# # - include dates in b/w
+
+SELECT CustomerName, CONCAT(Address,', ',PostalCode,', ',City,', ',Country) AS Address
+FROM Customers;
+
+SELECT o.OrderID, o.OrderDate, c.CustomerName
+FROM Customers AS c, Orders AS o
+WHERE c.CustomerName='Around the Horn' AND c.CustomerID=o.CustomerID;
+
+SELECT Orders.OrderID, Orders.OrderDate, Customers.CustomerName
+FROM Customers, Orders
+WHERE Customers.CustomerName='Around the Horn' AND Customers.CustomerID=Orders.CustomerID;
+
+
+You can customise columns to be
+NOT NULL(must i/p some value), UNIQUE(set column to accept only unique values like username, email etc.)
+
+PRIMARY KEY, FOREIGN KEY
+
+touch filename.extension - type in terminal create a filename
+
+from cs50 import SQL
+open("shows.db", "w").close() - creates a db and saves it
+db = sqlite("sqlite:///shows.db")
+db.execute("CREATE TABLE shows (id INTEGER, title TEXT, PRIMARY KEY(id))") - Using primary key auto increments  value in that particular column
+db.execute("CREATE TABLE genres (show_id INTEGER, genres TEXT, FOREIGN KEY(show_id) REFERENCES shows(id))")
+with open("asdasd.csv", "r") as file:
+    reader = csv.DictReader(file)
+    for row in reader:
+        title = row["title"].strip().upper()
+        id = db.execute("INSERT INTO shows (title) VALUES(?)", title) - if db has primary key it returns it if we are insering values
+        for genre in row["genres"].split(", "):
+            db.execute("INSERT INTO genres VALUES(?, ?)", id, genre)
+
+SELECT title FROM shows WHERE id IN (select show_id FROM genres WHERE genre = "Musical")
+SELECT DISTINCT(genre) from genres WHERE show_id in (SELECT id from show WHERE title LIKE "Office")
+
+JOIN TABLE/ Association Tables - basically minimising text values to single value along with unique identifier. THE join table holds only those identifiers not texts
+basically join table only holds foreign keys
+
+indexes - B-Trees
+CREATE INDEX name ON table (column1, column2,....); 
+Help reduce time taken to search value in the tables
+
+.timer ON/ OFF - To print time taken at the end of any query. Type this first then we can ignore and use regular SQL queries
+CREATE INDEX index_id on shows (title);
+
+JOIN - Join tables 
+
+SELECT MAX/ MIN(col) from table
+SELECT MAX/ MIN(col) from table WHERE <condition>
+
+SOME OTHER USEFUL OPERATIONS UNION, INTERSECT
+SELECT title FROM shows where id IN (SELECT show_id from stars WHERE person_id = (SELECT id FROM people WHERE name = "Steve Correl"));
+use equal (=) if a single value
+if we have multiple values use IN
+
+SELECT title from people
+....> JOIN stars ON people.id = stars.person_id
+....> JOIN shows ON stars.show_id = shows.id
+....> WHERE name = "Steve Correl";
+We get a combined database
+
+CREATE INDEX person_index ON stars (person_id);
+CREATE INDEX show_index ON stars (show_id);
+CREATE INDEX name_index ON people (name);
+SELECT title from people
+....> JOIN stars ON people.id = stars.person_id
+....> JOIN shows ON stars.show_id = shows.id
+....> WHERE name = "Steve Correl";
+Doing this above process by creating index help improve time efficiency
+
+SELECT users.fullname, moms.mother FROM users JOIN moms ON <predicate>(users.username = moms.username)
+
+-- comment in sql
+
+Use ? to pass on values from pyhton to sql
+usernmame = input()
+password = input()
+rows = db.execute("SELECT * FROM users WHERE user = (?) AND passwoord = (?)", user, password) - This is right
+#rows indicate that db will return list of user,password
+if len(rows) == 1:
+    #log in
+Dont use this -
+    ("SELECT * FROM users WHERE user = '{user}' AND passwoord = '{password}')
+ This can lead to SQL injection attacks
+
+DROP DATABASE TABLENAME - Drop database
+DELETE FROM table WHERE (CONDITION) - deletes that particular row
+
+Race Conditions:
+    Multi threaded environments have possibility of execution of codes co-mingling
+    To prevent we can use locking of tables, until one execution has finished
+    SQl commands to lock tables
+    BEGIN TRANSACTION
+    COMMIT
+    ROLL BACK
+db.execute("BEGIN TRANSACTION")
+|
+|   -Some code
+|
+db.execute("COMMIT")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

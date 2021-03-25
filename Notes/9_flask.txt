@@ -1,0 +1,80 @@
+Flask: framework (not just libraries) 
+    application.py
+    requiremnets.txt
+    static/ (static files like pdf's, js, images, gifs)
+    templates/ (html pages)
+Other frameworks: Django(php)
+
+    MVC Design pattern(model, view, controller)
+        Controller: python files that control website
+        View: Stuff human views(user interface) (html)
+        Model: Technique, service, software for data(sql, csv)
+    app = Flask(__name__) (turn current py fine(__name__) into a web application)
+    @app.route("/") / -default directory(route) for a function
+    In the directory of application.py 
+        > flask run
+    return render_template("fewf.html") - (html page render)
+    
+    import requests(parsing url's)
+    render_template("index.html", name=request.args.get("name", "world")) - from url get name after ?name=, if no name, it defaults to world
+    Inside html, use hello, {{name}}
+    url/?name=whatever_i_type
+    Dynamic html pages 
+
+    <form action="/greet" method="get">
+    from index.html, form input name="variable to store submitted name"
+    then in app.py fisrt_name=request.args.get("first_name")
+    hello {{first_name}}
+
+    Get exposes data in url 
+        change method to post<form action="/greet" method="post">
+    app.route("/greet", methods=["POST"])
+    And inside render_template do request.form.get
+
+JINJA
+request.args.get(GET REQUEST)
+request.form.get(POST REQUEST)
+action="/route"
+
+@app.route(/<number>) <> are important, we dynamically create url route
+def index(number):
+    print(number) - we can print the number
+
+
+submit buttons reload the WHOLE DAMN PAGE
+url_for() - alias for a long url, redirect(), session()
+render_template()
+
+AJAX (refresh only sections of page rather than whole page)
+
+XMLHttpRequest - Async req to server to get info
+function foo(name){
+var xhttp = new XMLHttpRequest()
+ xhttp.onreadystatechange = function(){
+
+     if(xhttp.readyState == 4 && xhttp.status == 200)
+     {$("#infodiv").html(xhttp.responseText);}
+
+xhttp.open("GET", name + ".html", true);
+xhttp.send();
+ }
+
+
+readyState() - [0 to 4]
+open(), send()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

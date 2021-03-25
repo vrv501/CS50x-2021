@@ -1,0 +1,407 @@
+routers - CPU 
+TCP/ IP - Protocols used for communication from Point A to point B
+Internet Protocol(IP) - IP address
+DNS(Domain Name system) - converts domain name into ip address
+DNS conversion is provided by ISP
+
+Transmission Control protocol 
+TCP ports: Each server has its own sockets to do what particular request it revieves
+If the port number at the end is 80(HTTP) - web page request, 443 - secure request(HTTPS)
+TCP can also re-send packets if they are lost or congested
+
+Large packets of data is broke into small pieces and send it to destination and then combined
+typically from web server into web browser
+
+Each packet sent from web server to browser, also has sent/receipent ip address along with sequence number to indicate
+order of packets to be assembled, and also to check if packet is lost. Each sub-packet is given an seq number for that.
+
+TCP/ IP governs what sender/ receipent addr 
+HTTP: Hyper text transfer protocol
+What goes inside of packets is governed by http
+GET POST:
+GET: To ask from server 
+
+https://www.example.com/
+http: protocol secure
+example.com - domain
+.com, .edu, .gov - top lvl domains
+www - host name (world wide web)
+
+https://www.example.com/index.html
+index.html is typical file we request from website. html contains image & file info.
+
+A typical request sent to server looks like this
+GET / HTTP/1.1        ( / - typical/default index.html, http: protocol, 1.1 is version)
+Host: www.example.com
+
+Then server sends this
+HTTP/1.1 200 OK - (http version, status code, small summary msg)
+Content-Type: text/html
+status code 200 means OK
+
+301 - moved permanently
+double click to de-simplify URL in chrome
+when you visit any website 
+
+HTTP/1.1 301 Moved permanently
+Location: https://harvard.edu
+HTTP/1.1 404 Not Found
+Content-type: html
+
+304 - not modified(if we ask same thing again, and my device has already cached the info i already/ previously asked)
+302 - Found
+307 - Temp redirect
+401 - Unauthorized
+403 - Forbidden
+500 - Internal server error
+503 - service unavailable
+
+curl -I <http website>
+gives request info from server to user. Used from CLI
+
+GET /search?q=cats HTTP /1.1 - searching cats in google
+
+Internet registrars - domain buying
+All packets are sent at the same time.
+
+Routers have lookup tables to send packet from one ip to another ip addr
+They can change packets way depending on timeouts & other factors
+
+html: markup language only aesthitics no logic
+just holds information usually sent by server to browser
+
+HTML:Latest Version HTML5
+tags
+attributes
+
+<!DOCTYPE html> - document type
+
+HTML TAG:
+<html lang = "en"> - open tag
+html - here is type, lang is attribute(short phrases with value)
+.......
+</html> - close tag
+
+HTML children
+<head>
+    <title>
+        hello, title - title bar   --viewed in tab name
+    </title>
+</head>
+<body>
+   hello, buddy - contents of page  --viewed in page
+</body>
+
+html after parsed is built tree like DS 
+Hierarachy:
+document
+    |
+    html
+    /  \
+head    body
+ |     hello, body     
+ title
+ |
+ hello, title
+
+80 - insecure port, 443 - secure port
+
+we need server to a visit any html page.
+For us to use server in cs50 ide, after writing html
+we can do
+> http-server 
+  on IDE
+Also works on local machines
+Keep in mind 8080 is already used by cs50 web server
+Most of the local machines will open html server in 8080 port 
+
+Every time a request recies to visit out html page hosted on web-page the terminal keeps log of req recieved
+
+All the below tags shud included in body tag
+<p> - paragraphs
+
+<h1> - biggest heading tag
+<h2>
+<h3> - the size of headings keep decreasing as hnum keep increasing
+Used before <p> tags to give a meaning. Headings before paragraphs
+
+<ul> - unordered lists 
+<li> - list elements -- automatically adds a bullet . for every element
+<ul>
+    <li> 1. 1st element </li>
+    <li> 2. 2nd element </li>
+</ul> 
+
+If you want to number list automatically
+<ol>         -- -- automatically adds a bullet numbered automatically for every element
+        <li> 1st element</li>
+        <li> 2nd element</li>
+</ol>
+For tables
+<table>
+        <tr>
+            <td> 1 </td>
+            <td> 2 </td> - td indicates table columns
+            <td> 3 </td>
+        </tr>
+        <tr> - indicates table rows
+            <td> 4 </td>
+            <td> 5 </td>
+            <td> 6 </td>
+        </tr>
+</table>
+table, table rows, table data
+For link images
+<img alt = "sdfdsf" src = "dssdfs.jpg"> alt indicates what img is (name off photo or we can include voice describing it for disabled ppl)
+
+Anchor links
+To link websites/images/html(hyper-link) to a word
+<a href = "https://www.dsfsdf.com or index2.html" id ="some other name">wordname</a>
+Include full url and to link another html page, make sure the current html page is in same path as other html page
+id in it pseudo names given which we will use later 
+
+<form action="" method=""></form>
+<input name = "" type = "" value = ""> order of attributes in i/p tag -no closing tag here
+generally type & value
+or name & type are conjunctionally used
+by default value has same name as type
+name can sometimes not require neither type nor value
+
+CSS uses properties, or key-value pairs, like color: red; to [tags with selectors].
+<style> added above <title> in <headings>
+<style>
+a - means anchor
+{
+color: #ff0000; - change color of hyperlinked words
+text-decoration: none; -- remove any text decoraions like underlining
+}
+a: hover
+{
+    text-decoration: underline; --when i hover over the word, underline
+}
+
+if we want to use id/identifier created before
+#some othername -- # indicates its unique identifier
+{
+    color: #ff0000; --hexcode
+}
+
+.name --class centered like class large, medium, small
+{
+
+}
+
+Belowtag in body tag 
+<form action = "www.google.com/search" method = "get">
+    <input name ="q" type="search">
+    <input type ="submit" value="Search">
+</form>
+***IMP***: submit only works on <form>
+
+gets i/p from user and searches on google and displays results. 
+redirects to google
+
+post hides data instead of get  deep inside of packet instead of displaying in url
+
+css - cascading styling sheets for making html pages prettier
+properties
+
+instead of style tag we can link
+<link href = "dfsd.css" rel = "stylesheet"> --use css for html page
+In body we can use following tags in <body>
+<header> --header in body in one line followed by next values in subsequent new lines
+<main>
+<footer>
+
+in header we can use style = "font-size: large; text-align: center;" - large font size align text in middle
+&#169 - copyright symbol which might not be on keyboard
+
+body atrributes will be cascaded by children
+
+
+type selectors: style Every instanace of tag 
+class selectors: 
+ID selectors
+
+save code on server, but run on client devices - client-side rendering.
+
+JS:
+loosely typed
+let counter = 0; initialisation using let
+counter += 1, counter++;
+if (x < y){}
+if(x < y){}else if(x>y){}else{}
+while(true){}
+for(let i=0;i<3;i++)
+
+<script>..</script> can be included in <head> or <body>
+or can be factored out like css using <script src="scripts.js"></script>
+a{} - applies to everything in body
+a: hover/activity{} can be added
+Include all css stylesheets in head as <link href="link to css sheet" rel="stylesheet">
+a. <form onsubmit="greet(); return false;"> - execute greet() on submit
+return false indicates we are not saving the form in server
+function greet()
+{
+    let name = document.querySelector("#name").value;
+    alert("hello, " + name);
+}
+b. or we can do document.querySelector("form").addEventListener(submit, greet);
+DOM - Document object model: 
+
+DevTools Console - errors in js code 
+document is global variable and top node in DOM and querySelector seraches in node of DOM for requested pseudoselector or id. .value gets value in the node
+JS functions
+blur
+change
+click
+drag
+focus
+keyup
+`hello, ${input.value}` - string concatenation
+<button> - tag 
+
+.put - send msg to light bulb
+json (js obj notation)- textual msgs across the internet
+
+Private address: Tackling shortage of IPv4 addr
+IPv6 
+
+DHCP: (dynamic host config prototcol)
+Automation of IP addr to a device
+
+DNS: phrases to IP addr & vice-versa
+
+Access points: Connection from device to server thru access points
+
+YOU---->DHCP server
+        DNS server   ---->Web server
+        ACCESS POINTS 
+
+IP
+Direct info from sender to reciever
+Routers: Connection of networks. Conains routing table
+Also re-routing of packets to different routes in case of clogging.
+Can't guarantee delivery of packets which is done by TCP
+
+TCP:
+Directing packet to correct service of receiving machine
+Interrelated to IP. TCP/IP. Guarantess succesfull delivery
+IP addr along with port number(for correct service)
+Also inidcates number of sub-packets with seq numbers
+Port no's: 21 - ftp, SMTP(email) - 25, DNS - 53, HTTP - 80, HTTPS - 443 
+
+HTTP:
+Application layer Protocol for web communication
+
+<b>bold <u>underline <i>italic
+in <ul> we can use <ul start=num> where bullets start from num 
+
+
+<div> - just arbitary page division
+
+<body><div>
+
+body - html tag selector
+{
+    background-color: blue(properties)
+}
+
+Some properties:
+border: style(dotted, dash) color, width(1px 2px(pixel width)) - these can be chained
+height: width
+background-color: [hexcode or color]
+color (foreground color): [hexcode or color]
+font-size: [absolute size | point size(10,20)|percentage(80-120%)]
+font-family; [font name]
+text-align:[left|right|center|justify]
+opacity: 0 to 1
+
+#unique - id(mentioned in html tag) selectors
+{
+
+}
+.students - class selectors
+{
+
+}
+
+<link> in head tag
+/* */ - comments in c
+JS:
+var x; //here x is object not variable
+for (var key in object)
+{
+    //use object[key] in here
+}
+
+var arr = [1,2,"Sadad",6]
+for (var ele of arr)
+{
+    console.log(ele)
+}
+
+String concatenation: 
+parseInt(variable_name) = string to int
+console.log(sasdad+"sadasd"+(parseInt(day+1)))
+array.size(), array.pop(), array.push(x)
+array.shift()
+array.map() - apply func to every element in array
+ex:
+arr = arr.map(func(num){return num*2;});
+
+alertName(event) - alerts with event name present in innerHTML
+Events: response to user interaction from web page
+eventhandler - callback functios that respond to html events
+.innerHTML is something b/w two tags
+
+HTML can be represnted as DOM in JS
+
+By resetting properties html change can be changed withut refreshing page
+
+console.dir(document) - DOM directory
+
+.DOM properties
+innerHTML, nodeName(name of HTML element or element's attribute), parentNode, id, childNodes, attributes, style
+.DOM methods
+getElementById(id) - element is name enclosed b/w tag
+getElementsByTagName(tag)
+appendChild(node) - add given node to DOM below this point 
+removeChild(node) - remove specified child node from DOM
+
+jQuery - JS library
+simplify client side scripting
+
+document.getElementById("color-Div").style.backgroundColor = "green"
+can be simplified with jQuery to
+$("#color-Div").css("background-color", "green");
+
+.toLowerCase() - converts string to lower case
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
