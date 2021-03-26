@@ -43,7 +43,7 @@ Big Thanks to the ***active [CS50 Discord Community](https://discord.com/invite/
     - Lab
       - [Inheritance](pset5/inheritance)
     - Problem set
-      - [Speller](pset5/speller)💥 (Using tries)
+      - [Speller](pset5/speller)(Using tries)💥 
 
 - ⛳[Week-6](pset6/) ```[Theme: Basics of Python]```
   - Lab
