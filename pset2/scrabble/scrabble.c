@@ -38,9 +38,13 @@ int compute_score(string word)
     int sum = 0;
     for (int i = 0; word[i] != '\0'; i++)
     {
-        if (isalpha(word[i]))      //Check if char is alphabet
+        //Check if character is an alphabet
+        if (isalpha(word[i]))
         {
-            sum += POINTS[(tolower(word[i]) - 97)]; //Convert every character to lower alphabet and add the points of it to a sum variable
+            // Convert each letter to lowercase if applicable
+            // Then subtract its ascii value with 97 to get an absolute index in range(0 to 25) - [26 alphabets]
+            // Use the index to obtain point assigned to that alphabet from POINTS array
+            sum += POINTS[(tolower(word[i]) - 97)];
         }
     }
     return sum;
