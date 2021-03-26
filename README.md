@@ -10,7 +10,7 @@ Big Thanks to the ***active [CS50 Discord Community](https://discord.com/invite/
 - ⛳Week-0  ```[Theme: Basics of Programming]```
   - [Scratch Project](https://scratch.mit.edu/projects/422144062/)
 
-- ⛳[Week-1](pset1/) ```[Theme: Basics of C, Cryptography]```
+- ⛳[Week-1](pset1/) ```[Theme: Basics of C, Greedy Algorithm, Cryptography]```
   - Lab
     - [Hello](pset1/hello)
     - [Population](pset1/population)
