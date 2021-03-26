@@ -3,6 +3,9 @@
 
 int main(void)
 {
-    string name = get_string("What is your name?\n"); //Enter your name
-    printf("hello, %s\n", name); //Greet the user with input name provided
+    // Enter your name
+    string name = get_string("What is your name?\n");
+
+    // Greet the user with input name provided
+    printf("hello, %s\n", name);
 }
