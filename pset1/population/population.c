@@ -6,12 +6,13 @@ int getEndSize(int);
 
 int main(void)
 {
-    // Get starting year
+    // Get starting population size
     int startSize = getStartSize();
 
-    // Get ending year
+    // Get ending population size
     int endSize = getEndSize(startSize);
-
+    
+    // Time taken to go from startSize to endSize
     int years = 0;
     while (startSize < endSize)
     {
