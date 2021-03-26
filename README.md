@@ -7,7 +7,7 @@ Instructor: [David J Malan](https://cs.harvard.edu/malan/)\
 Big Thanks to the active [CS50 Discord Community](https://discord.com/invite/cs50)
 
 # Table Of Contents
-- Week-0 ```[Theme: Basics of Programming]```
+- Week-0  ```[Theme: Basics of Programming]```
   - [Scratch Project](https://scratch.mit.edu/projects/422144062/)
 
-- Week-1 
+- [Week-1](pset1/)
