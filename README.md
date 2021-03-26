@@ -76,6 +76,6 @@ Big Thanks to the ***active [CS50 Discord Community](https://discord.com/invite/
     - [Finance](pset9/finance)💥
 
 # Misc
-[__Miscellaneous__ Folder](_Miscellaneous) consists of implementaion of searching/ sorting algorithms in C.\
-Week-10 is a write-up about opinions on content moderation on social-media sites. It will be omitted here\
+[_Miscellaneous Folder](_Miscellaneous) consists of implementaion of searching/ sorting algorithms in C.\
+Week-10 is a write-up about opinions on content moderation in social-media sites. It will be omitted here\
 Final Project coming soon.....
