@@ -1,39 +1,44 @@
 #include <cs50.h>
 #include <stdio.h>
 
-int get_start_int(void);
-int get_end_int(int);
+int getStartSize(void);
+int getEndSize(int);
 
 int main(void)
 {
-    int start_size = get_start_int(); //starting year
-    int end_size = get_end_int(start_size); //ending year
+    // Get starting year
+    int startSize = getStartSize();
+
+    // Get ending year
+    int endSize = getEndSize(startSize);
+
     int years = 0;
-    while (start_size < end_size)
+    while (startSize < endSize)
     {
-        start_size = start_size + (start_size / 3) - (start_size / 4);
-        years++;
+        startSize = startSize + (startSize / 3) - (startSize / 4);
+        ++years;
     }
-    printf("Years: %d\n", years); //total number of years taken
+    printf("Years: %d\n", years);
 }
 
-int get_start_int(void)
+int getStartSize(void)
 {
-    int n;
+    int num;
     do
     {
-        n = get_int("Start size: "); //Get input from User
+        num = get_int("Start size: ");
     }
-    while (n < 9);
-    return n;
+    while (num < 9); // Reject any number less than 9(min start population size limit)
+    return num;
 }
-int get_end_int(int start_size)
+
+int getEndSize(int startSize)
 {
-    int n;
+    int num;
     do
     {
-        n = get_int("End size: ");//Get input from User
+        num = get_int("End size: ");
     }
-    while (n < start_size);
-    return n;
+    while (num < startSize); //Reject any number that is less than startSize
+    return num;
 }
