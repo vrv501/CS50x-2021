@@ -1,7 +1,7 @@
 import re
 
 text = input("Text: ")
-l = re.sub("[^\w\s?!.]", "", text).split(' ') #replace anything other than letters, white space, ?, !, . with ""
+l = re.sub("[^\w\s?!.]", "", text).split(' ') #replace anything other than (letters, white space, ?, !, .) with ""
 print(l)
 letters = 0
 sentences = 0
