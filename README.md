@@ -26,6 +26,7 @@ Big Thanks to the ***active [CS50 Discord Community](https://discord.com/invite/
       - [Scrabble](pset2/scrabble)
     - Problem set
       - [Readability](pset2/readability)
+      - [Caesar](pset2/caesar)
       - [Substitution](pset2/substitution)
 
  - ⛳[Week-3](pset3/) ```[Theme: Algorithms, Graph Theory Basics]```
