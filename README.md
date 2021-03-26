@@ -66,7 +66,8 @@ Big Thanks to the ***active [CS50 Discord Community](https://discord.com/invite/
   - Lab
     - [Trivia](pset8/trivia)
   - Problem set
-    - [Homepage](pset8/homepage). Prof David Malan's personal website in my own style
+    - [Homepage](pset8/homepage). 
+         Prof David Malan's personal website in my own style. [Watch Demo](https://vimeo.com/526587367)
 
 - ⛳[Week-9](pset9/) ```[Theme: Flask, Python revisited, Jinja, Equity Markets(Stocks)]```
   - Lab
