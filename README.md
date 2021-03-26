@@ -7,7 +7,21 @@ Instructor: [David J Malan](https://cs.harvard.edu/malan/)\
 Big Thanks to the active [CS50 Discord Community](https://discord.com/invite/cs50)
 
 # Table Of Contents
-- Week-0  ```[Theme: Basics of Programming]```
+- ⛳Week-0  ```[Theme: Basics of Programming]```
   - [Scratch Project](https://scratch.mit.edu/projects/422144062/)
 
-- [Week-1](pset1/)
+- ⛳[Week-1](pset1/) ```[Theme: Basics of C, Cryptography]```
+  - Lab
+    - [hello](pset1/hello)
+    - [population](pset1/hello)
+  - Problem set
+    - [mario(more)](pset1/mario)
+    - [credit](pset1/credit)
+ 
+ - ⛳[Week-2](pset2/) ```[Theme: Arrays, ]```
+    - Lab
+      - [Scrabble](pset2/scrabble)
+    - Problem set
+      - [Readability](pset2/readability)
+      - [Substitution](pset2/substitution)
+    
