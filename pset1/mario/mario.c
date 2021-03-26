@@ -1,40 +1,62 @@
 #include <stdio.h>
 #include <cs50.h>
 
-int get_positive_num(void);
-void print_half(int i);
+int getPositiveNum(void);
+void printPyramid(int);
+void printPadding(int, int);
+void printHalf(int);
 
 int main(void)
 {
-    int n = get_positive_num(); //User Height input
+    // Get a positive integer from user
+    int height = getPositiveNum();
 
-    for (int i = 1; i <= n; i++)            //Print the ladder
+    // Print the pyramid
+    printPyramid(height);
+}
+
+int getPositiveNum(void)
+{
+    int num;
+    do
     {
-        for (int j = 1; j <= (n - i); j++)  //Padding
-        {
-            printf(" ");
-        }
-        print_half(i); //Left Half
+        num = get_int("Height: ");
+    }
+    while (num <= 0 || num > 8); // Reject if the number is less than or equal to 0, or greater than 8
+    return num;
+}
+
+void printPyramid(int height)
+{
+    for (int row = 0; row < height; row++)
+    {
+        // Padding
+        printPadding(height, row);
+
+        //Left Half with #
+        printHalf(row);
+
         printf("  ");
-        print_half(i); //Right Half
+
+        //Right Half with #
+        printHalf(row);
+
         printf("\n");
     }
 }
 
-int get_positive_num(void) //Check for valid user input
+void printPadding(int height, int row)
 {
-    int n;
-    do
+    for (int col = 0; col < (height - row - 1); col++)
     {
-        n = get_int("Height: ");
+        printf(" ");
     }
-    while (n <= 0 || n > 8);
-    return n;
 }
 
-void print_half(int i)
+
+void printHalf(int row)
 {
-    for (int j = 1; j <= i; j++)
+    for (int count = 0; count < (row + 1); count++)
     {
         printf("#");
     }
