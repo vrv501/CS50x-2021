@@ -53,7 +53,7 @@ Big Thanks to the ***active [CS50 Discord Community](https://discord.com/invite/
     - [Mario(more)](pset6/mario)
     - [Credit](pset6/credit)
     - [Readability](pset6/readability)
-    - [DNA](pset1/dna)
+    - [DNA](pset6/dna)
 
 - ⛳[Week-7](pset7/) ```[Theme: SQLite, Database querying]```
   - Lab
