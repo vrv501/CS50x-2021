@@ -15,7 +15,10 @@ Big Thanks to the ***active [CS50 Discord Community](https://discord.com/invite/
     - [Hello](pset1/hello)
     - [Population](pset1/population)
   - Problem set
-    - [Mario(more)](pset1/mario)
+    - Mario
+      - [Less comfortable](pset1/mario-less)
+      - [More comfortable](pset1/mario-more)
+    - [Cash](pset1/cash)
     - [Credit](pset1/credit)
  
  - ⛳[Week-2](pset2/) ```[Theme: Arrays, Cryptography, Encryption]```
