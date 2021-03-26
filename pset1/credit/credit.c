@@ -2,87 +2,128 @@
 #include <cs50.h>
 #include <math.h>
 
-long get_positive_num(void);
-void check(long);
+long getPositiveCardNum(void);
+int check(long);
+void printBrand(long, int);
 
 int main(void)
 {
-    long number = get_positive_num(); //get a valid long int
-    check(number); //check if it's a valid credit card number
+    // Get a cardNumber which is positive long integer
+    long cardNumber = getPositiveCardNum();
+
+    // Check if it's a valid credit card number by verifying checksum using Luhn’s algorithm and return it's cardNumberLength
+    int cardNumberLength = check(cardNumber);
+
+    // Print the brand of cardNumber
+    printBrand(cardNumber, cardNumberLength);
 }
 
-long get_positive_num(void)
+long getPositiveCardNum(void)
 {
-    long n;
+    long cardNumber;
     do
     {
-        n = get_long("Number: ");
+        cardNumber = get_long("Number: "); // cs50 library for accepting an i/p which is long(64-bit integer)
     }
-    while (n <= 0);
-    return n;
+    while (cardNumber <= 0); // Reject any zeros or negative numbers
+    return cardNumber;
 }
 
-void check(long num)
+int check(long cardNumber)
 {
-    int length = 0, even_sum = 0, odd_sum = 0, rem, odd_rem;
-    long copy_num = num;
-    //The below loop calculates length and checksum of given number
-    while (num != 0)
+    int cardNumberLength = 0, checkSum = 0, lastDigit;
+
+    while (cardNumber != 0)
     {
-        rem = num % 10;
+        // Get the last digit from the cardNumber.
+        lastDigit = cardNumber % 10;
 
-        //Calculate the sum when number is multiplied by 2 when we aare adding second-to-last digits
-        if (rem < 5)
+        // If it's a second-to-last digit in the cardNumber
+        if (cardNumberLength % 2 != 0)
         {
-            odd_rem = rem * 2;
-        }
-        else
-        {
-            odd_rem = (2 * rem) - 9;
+            lastDigit = lastDigit * 2;
+
+            // If the above product is a two digit number
+            if (lastDigit > 8)
+            {
+                lastDigit = lastDigit - 9; // Refer Logic 1.1(Bottom of this program) on why we do this
+            }
         }
 
-        even_sum = even_sum + (rem * ((1 + length) % 2));
-        odd_sum = odd_sum + (odd_rem * (length % 2));
-        num = num / 10;
-        ++length;
+        checkSum = checkSum + lastDigit;
+        cardNumber = cardNumber / 10; // Remove the last digit from the cardNumber as it's no longer needed.
+        ++cardNumberLength;
     }
-    //Check whether length and checksum are valid and identify appropriate credit card name
-    if (length > 12 && length < 17 && (odd_sum + even_sum) % 10 == 0)
+
+    if (checkSum % 10 == 0)
     {
-        int first_two = copy_num / pow(10, (length - 2));
-        if (length == 13)
+        return cardNumberLength;
+    }
+
+    // Return 0 if the checkSum is invalid
+    return 0;
+}
+
+void printBrand(long cardNumber, int cardNumberLength)
+{
+
+    // Check whether cardNumberLength is valid and identify the appropriate brand
+    if (cardNumberLength == 13 || cardNumberLength == 15 || cardNumberLength == 16)
+    {
+        int firstTwoDigits = cardNumber / pow(10, (cardNumberLength - 2));
+
+        // If cardNumberLength is 13 and firstDigit of the cardNumber is 4, it's a VISA card
+        if (cardNumberLength == 13)
         {
-            if ((first_two / 10) == 4)
+            if ((firstTwoDigits / 10) == 4) // Simply dividing firstTwoDigits by 10 will get us firstDigit of cardNumber
             {
-                printf("VISA\n");            //If length is 13 and first number is 4, it's a VISA card
+                printf("VISA\n");
                 return;
             }
 
         }
-        else if (length == 15)
+
+        // If cardNumberLength is 15, and firstTwoDigits are either 34 or 37, it's a American Express card
+        else if (cardNumberLength == 15)
         {
-            if (first_two == 34 || first_two == 37)
+            if (firstTwoDigits == 34 || firstTwoDigits == 37)
             {
-                printf("AMEX\n");  //If length is 15, and first number is 34 or 37, it's a American Express card
+                printf("AMEX\n");
                 return;
             }
         }
-        else if (length == 16)
+
+        else if (cardNumberLength == 16)
         {
-            if ((first_two / 10) == 4)
+            // If cardNumberLength is 16 and firstDigit of the cardNumber is 4, it's a VISA card
+            if ((firstTwoDigits / 10) == 4)
             {
-                printf("VISA\n"); //If length is 16 and first number is 4, it's a VISA card
+                printf("VISA\n");
                 return;
             }
-            else if (first_two > 50 && first_two < 56)
+
+            // If cardNumberLength is 16 and firstTwoDigits are in range (50 to 56) exclusive, it's a MasterCard card
+            else if (firstTwoDigits > 50 && firstTwoDigits < 56)
             {
-                printf("MASTERCARD\n"); //If length is 16 and first number is in range (51,56), it's a MasterCard card
+                printf("MASTERCARD\n");
                 return;
             }
         }
 
     }
     printf("INVALID\n");
-
-
 }
+
+/*
+Logic 1.1: (Operation done to second-to-last digit in Luhn's Algorithm)
+0 * 2 = 0
+1 * 2 = 2
+2 * 2 = 4
+3 * 2 = 6
+4 * 2 = 8
+5 * 2 = 10 = 1 + 0 = 1 (10 - 9)
+6 * 2 = 12 = 1 + 2 = 3 (12 - 9)
+7 * 2 = 14 = 1 + 4 = 5 (14 - 9)
+8 * 2 = 16 = 1 + 6 = 7 (16 - 9)
+9 * 2 = 18 = 1 + 8 = 9 (18 - 9)
+*/
