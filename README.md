@@ -1,5 +1,5 @@
 # CS50x-2021
-> ## **[Academic Honesty](https://cs50.harvard.edu/x/2021/honesty/)**
+> #### **[Academic Honesty](https://cs50.harvard.edu/x/2021/honesty/)**
 Enroll here: [CS50x](https://cs50.harvard.edu/x/)\
 Instructor: [David J. Malan](https://cs.harvard.edu/malan/)\
 Big Thanks to the ***active [CS50 Discord Community](https://discord.com/invite/cs50)***
