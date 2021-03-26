@@ -4,7 +4,7 @@
 
 Enroll here: [CS50x](https://cs50.harvard.edu/x/)\
 Instructor: [David J Malan](https://cs.harvard.edu/malan/)\
-Big Thanks to the active [CS50 Discord Community](https://discord.com/invite/cs50)
+Big Thanks to the ***active [CS50 Discord Community](https://discord.com/invite/cs50)***
 
 # Table Of Contents
 - ⛳Week-0  ```[Theme: Basics of Programming]```
