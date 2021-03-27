@@ -32,7 +32,7 @@ Big Thanks to the ***active [CS50 Discord Community](https://discord.com/invite/
       - [Sort](pset3/sort)
     - Problem set
       - [Plurality](pset3/plurality)
-      - [Tideman](pset3/tideman)(Iterative approach)💥
+      - [Tideman](pset3/tideman)(Iterative/ Non-recursive approach)💥
 
  - ⛳[Week-4](pset4/) ```[Theme: Memory organization, Pointers⚠, Image filters, File manipulation & Data Recovery]```
     - Lab
@@ -45,7 +45,7 @@ Big Thanks to the ***active [CS50 Discord Community](https://discord.com/invite/
     - Lab
       - [Inheritance](pset5/inheritance)
     - Problem set
-      - [Speller](pset5/speller)(Using tries)💥 
+      - [Speller](pset5/speller)(Using Tries)💥 
 
 - ⛳[Week-6](pset6/) ```[Theme: Basics of Python]```
   - Lab
