@@ -25,7 +25,7 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
 void sepia(int height, int width, RGBTRIPLE image[height][width])
 {
     RGBTRIPLE imageCopy[height][width];
-
+    
     for (int row = 0; row < height; row++)
     {
         for (int col = 0; col < width; col++)
