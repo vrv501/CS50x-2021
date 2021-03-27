@@ -136,7 +136,7 @@ RGBTRIPLE convolute(int row, int col, int height, int width, RGBTRIPLE image[hei
     // nearbyCells Gx, Gy calculation
     // Gxy indexes are calculated by using the principle that currRow, currCol of the pixel is at position (1, 1) of Gxy
     // Then relative positions are calculated using offset of offsetX = currRow - 1, offsetY = currCol - 1
-    // Then the start, end rows & cols of Gxy are simply rowNum - offsetX, colNum - offsetY
+    // The start, end rows & cols of Gxy are simply rowNum - offsetX, colNum - offsetY
     for (int subRow = startRow; subRow <= endRow; subRow++)
     {
         int absRow = subRow - row + 1;
