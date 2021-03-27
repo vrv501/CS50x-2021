@@ -32,6 +32,7 @@ Big Thanks to the ***active [CS50 Discord Community](https://discord.com/invite/
       - [Sort](pset3/sort)
     - Problem set
       - [Plurality](pset3/plurality)
+      - [Runoff](pset3/runoff)
       - [Tideman](pset3/tideman)(Iterative/ Non-recursive approach)💥
 
  - ⛳[Week-4](pset4/) ```[Theme: Memory organization, Pointers⚠, Image filters, File manipulation & Data Recovery]```
