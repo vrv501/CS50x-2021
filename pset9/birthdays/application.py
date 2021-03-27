@@ -24,9 +24,6 @@ def index():
         return redirect("/")
 
     else:
-
         # TODO: Display the entries in the database on index.html
         bday_db = db.execute("SELECT name, month, day FROM birthdays")
         return render_template("index.html", bday=bday_db)
-
-
