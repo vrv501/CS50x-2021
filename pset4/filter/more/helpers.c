@@ -6,7 +6,6 @@ int validCell(int, int);
 RGBTRIPLE nearbyAvg(int, int, int height, int width, RGBTRIPLE image[height][width]);
 RGBTRIPLE convolute(int, int, int height, int width, RGBTRIPLE image[height][width]);
 
-
 // Convert image to grayscale
 // Replace RGB with their avg sum
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
