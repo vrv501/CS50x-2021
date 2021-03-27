@@ -39,7 +39,9 @@ Big Thanks to the ***active [CS50 Discord Community](https://discord.com/invite/
     - Lab
       - [Volume](pset4/volume)
     - Problem set
-      - [Filter(more)](pset4/filter)💥
+      - [Filter](pset4/filter)💥
+        - [Less comfortable](pset4/filter/less)
+        - [More comfortable](pset4/filter/more)
       - [Recover](pset4/recover)
  
  - ⛳[Week-5](pset5/) ```[Theme: Data Structures⚠]```
