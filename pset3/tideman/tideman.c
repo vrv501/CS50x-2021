@@ -98,29 +98,30 @@ int main(int argc, string argv[])
 }
 
 // Update ranks given a new vote
+// ranks is an array where each element is candidateNum
+// Each element's position signify voter preference of a candidate over the other candidates
 bool vote(int rank, string name, int ranks[])
 {
-    // TODO
-    for (int i = 0; i < candidate_count; i++)
+    for (int candidateNumber = 0; candidateNumber < candidate_count; candidateNumber++)
     {
-        if (strcmp(candidates[i], name) == 0)
+        if (strcmp(candidates[candidateNumber], name) == 0)
         {
-            ranks[rank] = i;
+            ranks[rank] = candidateNumber;
             return true;
         }
     }
     return false;
 }
 
-// Update preferences given one voter's ranks
+// Update preferences given a voter's ranks array
+// Keep-in-mind, prefrences is a global int array, which means all it's elements are already initialised to zeros
 void record_preferences(int ranks[])
 {
-    // TODO
-    for (int i = 0; i < (candidate_count - 1); i++)
+    for (int superiorCandidateNum = 0; superiorCandidateNum < (candidate_count - 1); superiorCandidateNum++)
     {
-        for (int j = (i + 1); j < candidate_count; j++)
+        for (int inferiorCandidateNum = (superiorCandidateNum + 1); inferiorCandidateNum < candidate_count; inferiorCandidateNum++)
         {
-            ++preferences[ranks[i]][ranks[j]];
+            ++preferences[ranks[superiorCandidateNum]][ranks[inferiorCandidateNum]];
         }
     }
     return;
@@ -129,17 +130,18 @@ void record_preferences(int ranks[])
 // Record pairs of candidates where one is preferred over the other
 void add_pairs(void)
 {
-    // TODO
-    for (int i = 0; i < (candidate_count - 1); i++)
+    for (int candidateNum = 0; candidateNum < (candidate_count - 1); candidateNum++)
     {
-        for (int j = (i + 1); j < candidate_count; j++)
+        for (int opponentNum = (candidateNum + 1); opponentNum < candidate_count; opponentNum++)
         {
-            if (preferences[i][j] != preferences[j][i])
+            // Skip pairs which are tied
+            if (preferences[candidateNum][opponentNum] == preferences[opponentNum][candidateNum])
             {
-                pairs[pair_count].winner = preferences[i][j] > preferences[j][i] ? i : j;
-                pairs[pair_count].loser = preferences[i][j] < preferences[j][i] ? i : j;
-                ++pair_count;
+                continue;
             }
+            pairs[pair_count].winner = preferences[candidateNum][opponentNum] > preferences[opponentNum][candidateNum] ? candidateNum : opponentNum;
+            pairs[pair_count].loser = preferences[candidateNum][opponentNum] < preferences[opponentNum][candidateNum] ? candidateNum : opponentNum;
+            ++pair_count;
         }
     }
     return;
@@ -148,50 +150,69 @@ void add_pairs(void)
 // Sort pairs in decreasing order by strength of victory
 void sort_pairs(void)
 {
-    // TODO
-    int max_idx, temp_winner, temp_loser;
-    for (int i = 0; i < (pair_count - 1); i++)
+    int highStrengthPair;
+    pair tempPair;
+    for (int currPair = 0; currPair < (pair_count - 1); currPair++)
     {
-        max_idx = i;
-        for (int j = (i + 1); j < pair_count; j++)
+        // selectionSort
+        highStrengthPair = currPair;
+        for (int opponentPair = (currPair + 1); opponentPair < pair_count; opponentPair++)
         {
-            if (preferences[pairs[max_idx].winner][pairs[max_idx].loser] < preferences[pairs[j].winner][pairs[j].loser])
+            if (preferences[pairs[highStrengthPair].winner][pairs[highStrengthPair].loser] < preferences[pairs[opponentPair].winner][pairs[opponentPair].loser])
             {
-                max_idx = j;
+                highStrengthPair = opponentPair;
             }
         }
-        temp_winner = pairs[i].winner;
-        temp_loser = pairs[i].loser;
-        pairs[i].winner =  pairs[max_idx].winner;
-        pairs[i].loser =  pairs[max_idx].loser;
-        pairs[max_idx].winner = temp_winner;
-        pairs[max_idx].loser = temp_loser;
 
+        // If no pair whose strength is greater than current pair, then no need swap
+        if (highStrengthPair == currPair)
+        {
+            continue;
+        }
 
+        tempPair = pairs[currPair];
+        pairs[currPair] =  pairs[highStrengthPair];
+        pairs[highStrengthPair] = tempPair;
     }
     return;
 }
 
 // Lock pairs into the candidate graph in order, without creating cycles
+/*Logic 1.1:
+    Exploit the pairs array which is sorted in decreasing order of strengths
+    Which means currpair forming cycle is only influenced by previous pairs connections only.
+    The pairs coming after the currPair have no role in influencing of formation of cycle due to currPair
+*/
 void lock_pairs(void)
 {
-    for (int i = 0; i < pair_count; i++)
+    for (int startPair = 0; startPair < pair_count; startPair++)
     {
-        int target = pairs[i].winner;
-        for(int j = (i - 1); j >= 0; j--)
+
+        // Step1: Our current target is to find whether currPair winner has appeared as a loser in previous pairs using pairs struct(Logic 1.1)
+        int target = pairs[startPair].winner;
+
+        for (int prevPair = (startPair - 1); prevPair >= 0; prevPair--)
         {
-            if (target == pairs[j].loser)
+
+            // We have found a Pair satisfying step 1
+            if (target == pairs[prevPair].loser)
             {
-                target = pairs[j].winner;
-                if (target == pairs[i].loser)
+                // New target becomes this Pair's winner. Repeat step 1 again
+                target = pairs[prevPair].winner;
+
+                // If new target is loser of startPair, cycle has been formed. We terminate
+                if (target == pairs[startPair].loser)
                 {
                     break;
                 }
             }
         }
-        if (target != pairs[i].loser)
+
+        // We have checked all previous pairs and found no pair satisfying step-1. So safe to say we can lock the connection
+        // If found cycle, then skip locking the connection
+        if (target != pairs[startPair].loser)
         {
-            locked[pairs[i].winner][pairs[i].loser] = true;
+            locked[pairs[startPair].winner][pairs[startPair].loser] = true;
         }
     }
     return;
@@ -200,28 +221,25 @@ void lock_pairs(void)
 // Print the winner of the election
 void print_winner(void)
 {
-    // TODO
     int flag;
-    for (int i = 0; i < candidate_count; i++)
+    for (int currNode = 0; currNode < candidate_count; currNode++)
     {
         flag = 0;
-        for (int j = 0; j < candidate_count; j++)
+        for (int otherNode = 0; otherNode < candidate_count; otherNode++)
         {
-            if (locked[j][i])
+            if (locked[otherNode][currNode])
             {
                 flag = 1;
                 break;
             }
         }
+
+        // We have found currNode doesn't have any connections from otherNodes
         if (flag == 0)
         {
-            printf("%s\n", candidates[i]);
+            printf("%s\n", candidates[currNode]);
             break;
         }
     }
     return;
 }
-
-
-
-
