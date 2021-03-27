@@ -44,7 +44,6 @@ int main(int argc, char *argv[])
     {
         sample *= factor;
         fwrite(&sample, 2, 1, output);
-
     }
 
     // Close files
