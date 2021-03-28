@@ -2,47 +2,60 @@ from sys import exit
 
 
 def main():
-    number = get_positive_num()
-    check(number)
+
+    # Get positive card number
+    cardNumber = get_positive_num()
+
+    # Check validity of card and print brand
+    check(cardNumber)
 
 
 def get_positive_num():
     while True:
-        n = input("Number: ")
-        if n.isdigit() and int(n) > 0:
+        number = input("Number: ")
+        if number.isdigit() and int(number) > 0:
             break
-    return n
+    return number
 
 
-def check(number):
-    length = len(number)
+def check(cardNumber):
+    length = len(cardNumber)
+
+    # If valid length
     if length in [13, 15, 16]:
-        tot_sum = 0
-        len1 = length - 1
-        for i in range((length - 1), -1, -1):
-            j = i - len1
-            if j % 2 == 0:
-                tot_sum += int(number[i])
-            else:
-                x = int(number[i])
-                if x < 5:
-                    x = x * 2
-                else:
-                    x = (x * 2) - 9
-                tot_sum += x
+        checkSum = 0
 
-        if tot_sum % 10 == 0:
-            if length == 13 and number[0] == '4':
+        # Loop over every character to find checkSum
+        for digitPosition in range(0, length):
+            digit = int(cardNumber[(length - digitPosition - 1)])
+            if digitPosition % 2 != 0:
+                digit *= 2
+                if digit > 8:
+                    digit -= 9
+            checkSum += digit
+
+        # Identify whether checkSum satisfies Luhn's algorithm
+        if checkSum % 10 == 0:
+
+            # Conditions for VISA
+            if length == 13 and cardNumber[0] == '4':
                 print("VISA")
                 exit(0)
-            elif length == 15 and number[:2] in ["34", "37"]:
+
+            # Conditions for AMEX
+            elif length == 15 and cardNumber[:2] in ["34", "37"]:
                 print("AMEX")
                 exit(0)
+
             else:
-                if number[0] == '4':
+
+                # Conditions for VISA
+                if cardNumber[0] == '4':
                     print("VISA")
                     exit(0)
-                elif 50 < int(number[:2]) < 56:
+
+                # Conditions for MASTER-CARD
+                elif 50 < int(cardNumber[:2]) < 56:
                     print("MASTERCARD")
                     exit(0)
 
