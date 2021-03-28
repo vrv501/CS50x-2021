@@ -63,7 +63,7 @@ Big Thanks to the ***active [CS50 Discord Community](https://discord.com/invite/
     - [Readability](pset6/readability)
     - [DNA](pset6/dna)
 
-- ⛳[Week-7](pset7/) ```[Theme: SQLite, Database querying]```
+- ⛳[Week-7](pset7/) ```[Theme: SQLite, Database querying, Crime Investigation]```
   - Lab
     - [Songs](pset7/songs)
   - Problem set
@@ -85,5 +85,7 @@ Big Thanks to the ***active [CS50 Discord Community](https://discord.com/invite/
 
 # Misc
 [_Miscellaneous Folder](_Miscellaneous) consists of implementation of searching/ sorting algorithms in C.\
+
 Week-10 is a write-up about opinions on content moderation in social-media sites. It will be omitted here\
+
 Final Project coming soon.....
