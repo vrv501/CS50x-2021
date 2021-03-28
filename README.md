@@ -58,6 +58,7 @@ Big Thanks to the ***active [CS50 Discord Community](https://discord.com/invite/
     - [Mario](pset6/mario)
       - [Less comfortable](pset6/mario/less)
       - [More comfortable](pset6/mario/more)
+    - [Cash](pset6/cash)
     - [Credit](pset6/credit)
     - [Readability](pset6/readability)
     - [DNA](pset6/dna)
