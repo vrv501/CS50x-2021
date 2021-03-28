@@ -50,7 +50,7 @@ Big Thanks to the ***active [CS50 Discord Community](https://discord.com/invite/
     - Problem set
       - [Speller](pset5/speller)(Using Tries)💥 
 
-- ⛳[Week-6](pset6/) ```[Theme: Basics of Python]```
+- ⛳[Week-6](pset6/) ```[Theme: Basics of Python, Forensics, Probability]```
   - Lab
     - [World Cup](pset6/worldcup)
   - Problem set
