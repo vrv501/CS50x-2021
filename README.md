@@ -55,7 +55,9 @@ Big Thanks to the ***active [CS50 Discord Community](https://discord.com/invite/
     - [World Cup](pset6/worldcup)
   - Problem set
     - [Hello](pset6/hello)
-    - [Mario(more)](pset6/mario)
+    - [Mario](pset6/mario)
+      - [Less comfortable](pset6/mario/less)
+      - [More comfortable](pset6/mario/more)
     - [Credit](pset6/credit)
     - [Readability](pset6/readability)
     - [DNA](pset6/dna)
