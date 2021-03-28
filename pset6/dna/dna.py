@@ -6,39 +6,60 @@ if len(argv) != 3:
     print(f"Usage: python {argv[0]} data.csv sequence.txt")
     exit(1)
 
+peopleDNAinfo = []
+STRS = None
 with open(argv[1], "r") as db:
-    dna_list = []
-    db_dict = {}
-    for line in db:
-        current_dna_list = line.rstrip("\n").split(',')
-        if len(dna_list) == 0:
-            for word in current_dna_list[1:]:
-                dna_list.append(word)
-            continue
-        db_dict["".join(current_dna_list[1:])] = current_dna_list[0]
+    reader = csv.DictReader(db)
+    STRS = reader.fieldnames[1:]
 
+    # Convert counts of STRS of every person into integers
+    for person in reader:
+        for STR in STRS:
+            person[STR] = int(person[STR])
+        peopleDNAinfo.append(person)
+
+# Input seq from CL arguments
+inputSeq = None
 with open(argv[2], "r") as seq:
-    input_seq = seq.read().rstrip("\n")
+    inputSeq = seq.read().rstrip("\n")
 
-length = len(input_seq)
-str_key = ""
-for str_seq in dna_list:       #dna_list is a list having str's whose count has to be determined from input seq
-    i = 0
-    str_len = len(str_seq)
-    max_num = 0
-    curr_count = 0
-    while i < length:
-        if input_seq[i:i + str_len] == str_seq:  #input_seq is self explanatory
-            curr_count += 1
-            i += str_len
+inputSeqLen = len(inputSeq)
+inputSeqSTRCount = {}
+
+# Loop over seq to calculate STR count
+for STR in STRS:
+    # For every STR, initialise helper variables
+    STRlen = len(STR)
+    currCount = 0
+    maxCount = 0
+    index = 0
+
+    # Loop over inputSeq for finding maxcount of consecutive STR
+    while index < inputSeqLen:
+        if inputSeq[index: (index + STRlen)] == STR:
+            currCount += 1
+            index += STRlen
         else:
-            if curr_count > max_num:
-                max_num = curr_count
-            curr_count = 0
-            i += 1
-    str_key += str(max_num)
+            if currCount > maxCount:
+                maxCount = currCount
+            currCount = 0
+            index += 1
 
-if str_key not in db_dict:      # db_dict is a dictionary having key as counts of str's(combined as string) and name as value ex: d[415] = "bob" 4-AATG 1-TATAG 4-AGTC
-    print("No match")
-else:
-    print(db_dict[str_key])
+    inputSeqSTRCount[STR] = maxCount
+
+for person in peopleDNAinfo:
+    found = True
+
+    # Equate counts of STR of a person in database to inputSeq
+    for STR in STRS:
+
+        # If any STR count doesn't match, we stop and move onto next person
+        if person[STR] != inputSeqSTRCount[STR]:
+            found = False
+            break
+    if (found):
+        print(f"{person['name']}")
+        exit(0)
+
+print("No match")
+
