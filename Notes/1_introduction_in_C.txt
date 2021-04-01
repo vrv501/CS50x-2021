@@ -45,7 +45,7 @@ rmdir lecture - remove directory
 rm -r directory_name - deletes entire directory
 
 mv hello.c .. - move file(hello.c) up one level of home directory tree
-mv hello.c goodbye.c - move file(hello.c) to any location or rename(instead of location we name it goodbye.c to renmae it)
+mv hello.c goodbye.c - move file(hello.c) to any location or rename(instead of location we name it goodbye.c to rename it)
 
 mkdir lecture - create folder named lecture
 
@@ -72,20 +72,20 @@ char *s = get_string();
 
 signed or default int/any data_type - -ve(-2^31) to +ve(2^31 - 1)
 unsigned - only +ve(0 to 2^32 - 1) same range as signed but doubles +ve range 
-char (-2^7 to -2^7 - 1)
+char (-2^7 to 2^7 - 1)
 void - is type, not data-type
 
 
 
 Implicit Typecasting - when small datatype is used with bigger datatype it enhances the result to bigger one,but reverse is not true
 int/int = int 
-but int/float/double - float 
+but int/float - float or int/double=double
 
-Explicit Typecasting - allows both big to small typecasting & vice-versa
+Explicit Typecasting - allows both big to small typecasting & vice-versa. Careful as it truncates, which results in loss of precision
 (int)float = int
 
 Some important things:
-printf("%d",double_datatype) - issues warning but compiles fine, since double range > int range - it prints garbage
+printf("%d",double_datatype) - issues warning but compiles fine, it prints garbage - since double range > int range 
 printf("%f", int_datatype) - issues warning but compiles fine and prints the correct value with decimals
 Takeaway: if placeholder range > variable datatype range - prints fine, vice-versa prints garbage but in both cases it issues warnings 
 
@@ -106,7 +106,7 @@ f = c + c++ - will print 13 not 12. //don't use such expressions anywhere becaus
 
 
 
-for(int i = 0,j = 0; i < n && i < n1; i+=1 or n or i++)
+for(int i = 0,j = 0; i < n && i < n1; i+=1 or n or i++, j++)
 all 3 arguments in for is not necessary, provided we have done initialisation(multiple values can be initialised), condition(multiple conditions can be used with logical operators), increment/decrement inside /outside loop
 
 For functions, we can declare prototype above main function, and define them later down the road
@@ -119,7 +119,7 @@ do{}while();
 
 Floating point imprecision:
 Integer Overflow:
-any_num = low limit + (current_num - (higherlimit + 1))
+  any_num = low limit + (current_num - (higherlimit + 1))
 
 Ternary Operator
-int x = (expr)?value1(expr is true):value2(expr is false)
+int x = (expr) ? value1(expr is true) : value2(expr is false)
