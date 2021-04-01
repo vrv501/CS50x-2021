@@ -12,25 +12,25 @@ linking - link/merge machine codes of all other libraries, main functions
 arrays - continguous memory locations
 In c11 - we can get input from user and declare array size
 Ex: arr[tot], tot is taken as i/p during run-time, tot can also be const type
-Assignment of empty array to another array using assignment operator is not legal C, so we copy manually using loops
+Assignment of empty array to another array using assignment operator is not legal C, so we copy manually using loops.(Although you can assign a new pointer to the array)
 global arrays are automatically initialised with zeros
 This is also true for global ints, floats(set to zeros)
 
-const int TOTAL = 3//Var TOTAL is of type int and constant across the program 
+const int TOTAL = 3 // Var TOTAL is of type int and constant across the program 
 Convention to capitalize variable names which are constant
 
-(int)char or printf("%i",any_char_variable) or int s[1] s[0] = 'any_char' gives ASCII value
+(int)char or printf("%i",any_char_variable) or int s[1]; s[0] = 'any_char' gives ASCII value
 
 Strings: array of characters
 ending of every string = '\0'(null-terminator:ASCII - 0(8bits of zeros))
 This can be visualised by printf("%i",s[length]) gives zero 
-Note: This is only
+
 
 Problem with C;
 EX: char or int or any_datatype s[100]
 when printing we do printf("%i",s[any_num])
 but what if the any_num > array length, C will absolutely compile fine and print whatever in the memory location eventhough it's length < any_num(ASCII VALUE since it's %i). It's also true for multi dimensional arrays a[any_num][any_num] will compile fine since and run even tho any_num > array_length
-This is undesired and dangerous property and can be used to find or explore values in memory using array(pointers)
+This is undesired and dangerous property and can be used to find or explore values in memory using array(or pointers)
 This is a perfect example of why printf or any loop(for, while) doesn't have bounds checking for arrays 
 Simply put C doesn't have bounds checking for arrays
 
@@ -47,7 +47,7 @@ words[0] = "sada"
 words[1] = "Saddasd"
 words[0][0] - s 
 s[i] >= 'a' && s[i] <= 'z' - relational operators can be used for chars
-s[i] - 32 - characters can be used with arithmetic operators (converts char into ascii that can be used with int)
+s[i] - 32 - (upper-case to lower-case)
 
 <ctype.h>
 islower(s[i]) - returns any_num if char is lower alphabet, otherwise return zero
