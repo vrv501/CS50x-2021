@@ -24,7 +24,8 @@ with open(argv[2], "r") as seq:
     inputSeq = seq.read().rstrip("\n")
 
 inputSeqLen = len(inputSeq)
-inputSeqSTRCount = []
+# Empty dictionary
+inputSeqSTRCount = {}
 
 # Loop over seq to calculate STR count
 for STR in STRS:
