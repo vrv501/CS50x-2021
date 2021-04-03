@@ -32,6 +32,7 @@ void record_preferences(int ranks[]);
 void add_pairs(void);
 void sort_pairs(void);
 void lock_pairs(void);
+bool cycle(int, int);
 void print_winner(void);
 
 int main(int argc, string argv[])
@@ -178,44 +179,39 @@ void sort_pairs(void)
 }
 
 // Lock pairs into the candidate graph in order, without creating cycles
-/*Logic 1.1:
-    Exploit the pairs array which is sorted in decreasing order of strengths
-    Which means currpair forming cycle is only influenced by previous pairs connections only.
-    The pairs coming after the currPair have no role in influencing of formation of cycle due to currPair
-*/
 void lock_pairs(void)
 {
-    for (int startPair = 0; startPair < pair_count; startPair++)
+    for (int currPair = 0; currPair < pair_count; currPair++)
     {
-
-        // Step1: Our current target is to find whether currPair winner has appeared as a loser in previous pairs using pairs struct(Logic 1.1)
-        int target = pairs[startPair].winner;
-
-        for (int prevPair = (startPair - 1); prevPair >= 0; prevPair--)
+        // Check whether currPair forms a cycle
+        if (!cycle(pairs[currPair].winner, pairs[currPair].loser))
         {
-
-            // We have found a Pair satisfying step 1
-            if (target == pairs[prevPair].loser)
-            {
-                // New target becomes this Pair's winner. Repeat step 1 again
-                target = pairs[prevPair].winner;
-
-                // If new target is loser of startPair, cycle has been formed. We terminate
-                if (target == pairs[startPair].loser)
-                {
-                    break;
-                }
-            }
-        }
-
-        // We have checked all previous pairs and found no pair satisfying step-1. So safe to say we can lock the connection
-        // If found cycle, then skip locking the connection
-        if (target != pairs[startPair].loser)
-        {
-            locked[pairs[startPair].winner][pairs[startPair].loser] = true;
+            locked[pairs[currPair].winner][pairs[currPair].loser] = true;
         }
     }
     return;
+}
+
+bool cycle(int winner, int loser)
+{
+    // Base case. If winner is same as loser, cycle found
+    if (locked[loser][winner])
+    {
+        return true;
+    }
+
+    // Check if currPair winner has been a loser before
+    for (int newWinner = 0; newWinner < candidate_count; newWinner++)
+    {
+        // If yes, then recursively call this function with new winner
+        if (locked[newWinner][winner])
+        {
+            return cycle(newWinner, loser);
+        }
+    }
+
+    // No cases of cycle found
+    return false;
 }
 
 // Print the winner of the election
