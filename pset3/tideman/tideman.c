@@ -206,7 +206,11 @@ bool cycle(int winner, int loser)
         // If yes, then recursively call this function with new winner
         if (locked[newWinner][winner])
         {
-            return cycle(newWinner, loser);
+            bool cycleFound = cycle(newWinner, loser);
+            if (cycleFound)
+            {
+                return cycleFound;
+            }
         }
     }
 
