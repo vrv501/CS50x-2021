@@ -188,7 +188,7 @@ then its fread(bytes, sizeof(BYTE), 3, file)
 
 any arrays are nothing but pointers to 1st element
 int i = 0;
-sprintf(string variable, "%003i.jpg", i);
+sprintf(string variable, "%03i.jpg", i);
 i++;
 
 fseek(), feof(), ftell() - some useful func
