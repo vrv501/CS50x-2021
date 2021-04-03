@@ -201,20 +201,3 @@ db.execute("BEGIN TRANSACTION")
 |   -Some code
 |
 db.execute("COMMIT")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
