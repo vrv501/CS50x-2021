@@ -58,14 +58,14 @@ int main(int argc, string argv[])
             if (isupper(character))
             {
                 alphabetPosition = alphabetPosition + 65;
-                character = toupper((char)alphabetPosition);
+                character = (char)alphabetPosition;
             }
 
             // Lower cipher character for lowercase letter in plain-text
             else
             {
                 alphabetPosition = alphabetPosition + 97;
-                character = tolower((char)alphabetPosition);
+                character = (char)alphabetPosition;
             }
         }
         printf("%c", character);
