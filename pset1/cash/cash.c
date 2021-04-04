@@ -8,10 +8,10 @@ void printCoins(int);
 int main(void)
 {
     // Get change from user
-    int penny = getChange();
+    int change = getChange();
 
     // Print the number of coins required for change
-    printCoins(penny);
+    printCoins(change);
 }
 
 int getChange(void)
@@ -25,24 +25,24 @@ int getChange(void)
     return round(100 * change);
 }
 
-void printCoins(int penny)
+void printCoins(int change)
 {
     int cents25, cents10, cents5, cents1, totalCoins;
 
     // Number of 25 cent coins required
-    cents25 = penny / 25;
-    penny = penny - (cents25 * 25);
+    cents25 = change / 25;
+    change -= (cents25 * 25);
 
     // Number of 10 cent coins required
-    cents10 = penny / 10;
-    penny = penny - (cents10 * 10);
+    cents10 = change / 10;
+    change -= (cents10 * 10);
 
     // Number of 5 cent coins required
-    cents5 = penny / 5;
-    penny = penny - (cents5 * 5);
+    cents5 = change / 5;
+    change -= (cents5 * 5);
 
     // Number of 1 cent coins required
-    cents1 = penny;
+    cents1 = change;
 
     totalCoins = cents25 + cents10 + cents5 + cents1;
     printf("%d\n", totalCoins);
