@@ -177,7 +177,6 @@ void sort_pairs(void)
     }
     return;
 }
-
 // Lock pairs into the candidate graph in order, without creating cycles
 void lock_pairs(void)
 {
@@ -192,10 +191,10 @@ void lock_pairs(void)
     return;
 }
 
-bool cycle(int winner, int loser)
+bool cycle(int currWinner, int startPairLoser)
 {
-    // Base case. If winner is same as loser, cycle found
-    if (locked[loser][winner])
+    // Base case. If there is a connection from startPairLoser to currWinner, cycle found
+    if (locked[startPairLoser][currWinner])
     {
         return true;
     }
@@ -203,18 +202,20 @@ bool cycle(int winner, int loser)
     // Check if currPair winner has been a loser before
     for (int newWinner = 0; newWinner < candidate_count; newWinner++)
     {
-        // If yes, then recursively call this function with new winner
-        if (locked[newWinner][winner])
+        // If yes, then recursively call cycle function with new winner
+        if (locked[newWinner][currWinner])
         {
-            bool cycleFound = cycle(newWinner, loser);
-            if (cycleFound)
+            // If function returns true, then cycle is found.
+            if (cycle(newWinner, startPairLoser))
             {
-                return cycleFound;
+                return true;
             }
+
+            // Otherwise continue checking connections b/w rest of the candidates & currWinner
         }
     }
 
-    // No cases of cycle found
+    // No cycle found
     return false;
 }
 
