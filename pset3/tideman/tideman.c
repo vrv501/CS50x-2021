@@ -193,7 +193,7 @@ void lock_pairs(void)
 
 bool cycle(int currWinner, int startPairLoser)
 {
-    // Base case. If there is a connection from startPairLoser to currWinner, cycle found
+    // Base case. If startPairLoser is currWinner, cycle found
     if (startPairLoser == currWinner)
     {
         return true;
