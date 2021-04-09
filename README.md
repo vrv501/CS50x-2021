@@ -87,5 +87,3 @@ Big Thanks to the ***active [CS50 Discord Community](https://discord.com/invite/
 [_Miscellaneous Folder](_Miscellaneous) consists of implementation of searching/ sorting algorithms in C.
 
 Week-10 is a write-up about opinions on content moderation in social-media sites. It will be omitted here
-
-Final Project coming soon.....
