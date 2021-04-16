@@ -5,7 +5,7 @@ Instructor: [David J. Malan](https://cs.harvard.edu/malan/)\
 Big Thanks to the ***active CS50 Discord Community***
 
 # Join CS50 Community🤝
-<a href="https://discord.gg/cs50"><img src="https://discord.com/assets/192cb9459cbc0f9e73e2591b700f1857.svg" width="128" height="128"></a>
+<a href="https://discord.gg/cs50"><img src="https://discord.com/assets/192cb9459cbc0f9e73e2591b700f1857.svg"></a>
 
 # Table Of Contents
 - ⛳Week-0  ```[Theme: Basics of Programming]```
