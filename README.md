@@ -2,7 +2,7 @@
 ### **[Academic Honesty](https://cs50.harvard.edu/x/2021/honesty/)**
 Enroll here: [CS50x](https://cs50.harvard.edu/x/)\
 Instructor: [David J. Malan](https://cs.harvard.edu/malan/)\
-Big Thanks to the ***active CS50 Discord Community [![CS50 Discord Community](https://discord.com/assets/192cb9459cbc0f9e73e2591b700f1857.svg)](https://discord.gg/cs50)***
+Big Thanks to the ***active CS50 Discord Community [![CS50 Discord Community](https://discord.com/assets/192cb9459cbc0f9e73e2591b700f1857.svg =128x128)](https://discord.gg/cs50)***
 
 # Table Of Contents
 - ⛳Week-0  ```[Theme: Basics of Programming]```
