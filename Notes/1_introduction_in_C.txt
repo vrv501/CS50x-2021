@@ -10,6 +10,13 @@ Link: ide.cs50.io
 Header files 
 #include <cs50.h> 
 #include <stdio.h>  
+Anything beginning with # is a pre-processor directive.
+It's a process done before compilation. Basically preprocess the source code with modifications which are dictated by directive
+Here include is the directive. It means to include source code from input provided from whom we will use some functions, variables etc
+stdio.h - header files(can also be a .c file) is file name whom we will be including in the source file. <> indicate they are standard libraries.
+If you want to use custom-user made files, simply put " "
+
+
 
 string ans = get_string("What ?: "); - gets input and stores it as get_string
 %s, %d - placeholders or format specifiers
