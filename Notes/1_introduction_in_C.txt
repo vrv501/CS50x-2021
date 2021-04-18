@@ -25,6 +25,10 @@ string ans = get_string("What ?: "); - gets input and stores it as get_string
 int main(void) - better to write void
 all get_datatype fuction literally ignore any input unless we provide asked data-type
 Ex: get_int only accepts integers, not empty char, strings, float, double
+Note: float, duble actually have different range. We use mantissa, exponent to represent fractions here
+In float (single precision) - precision upto 6 decimal values
+In double(double precision) - precision upto 15 decimal values
+
 
 help50 - To help understand errors/ warnings in meaningful way
 Syntax: help50 make hello - Here hello is name of c program file
