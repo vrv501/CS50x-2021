@@ -112,8 +112,13 @@ d = c++ //d here will be 6 not 7, but c is 7
 printf("%d",e++) - also prints 6 instead of 7
 but
 c=6
-f = c + c++ - will print 13 not 12. //don't use such expressions anywhere because this is undefined behavior
+f = c + c++  //don't use such expressions anywhere because this is undefined behavior(there are two end-points here. c value is being referenced two times, giving rise to ambiguity)
 
+Order of precedence
+(post)++, (post)--, +, - (Unary)  post ++, -- (left-to-right)
+(pre)++, --  pre ++, -- (right-to-left)
+* / %
++ - (binary)
 
 
 
