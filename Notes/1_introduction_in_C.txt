@@ -119,6 +119,8 @@ Order of precedence
 (pre)++, --  pre ++, -- (right-to-left)
 * / %
 + - (binary)
+==, !=, ?:
++=, -=, %=, *=, /= 
 
 
 
