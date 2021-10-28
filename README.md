@@ -77,7 +77,7 @@ Big Thanks to the ***active CS50 Discord Community***
     - [Trivia](pset8/trivia)
   - Problem set
     - [Homepage](pset8/homepage)
-      View the website [here](https://skyfall01.github.io/CS50x-2021/) !!!
+      \View the website [here](https://skyfall01.github.io/CS50x-2021/) !!!
 
 - ⛳[Week-9](pset9/) ```[Theme: Flask, Python revisited, Jinja, Equity Markets(Stocks)]```
   - Lab
